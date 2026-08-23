@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HAPPY KIDS COMPANY — CONFIDENTIAL</title>
+
+<style>
+    body {
+        margin: 0;
+        background: #050505;
+        color: #d8d8d8;
+        font-family: "Courier New", monospace;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.025) 0px,
+            rgba(255,255,255,0.025) 1px,
+            transparent 2px,
+            transparent 4px
+        );
+        z-index: 10;
+    }
+
+    .terminal {
+        width: 90%;
+        max-width: 720px;
+        border: 1px solid #555;
+        padding: 35px;
+        box-sizing: border-box;
+        background: #080808;
+        box-shadow: 0 0 25px rgba(255,255,255,0.05);
+    }
+
+    .header {
+        color: #aaa;
+        border-bottom: 1px solid #444;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+
+    .title {
+        font-size: 22px;
+        letter-spacing: 3px;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        color: #777;
+    }
+
+    .warning {
+        color: #bbb;
+        margin-bottom: 35px;
+        line-height: 1.6;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #999;
+    }
+
+    input {
+        width: 100%;
+        box-sizing: border-box;
+        background: #000;
+        color: #fff;
+        border: 1px solid #555;
+        padding: 13px;
+        font-family: "Courier New", monospace;
+        font-size: 15px;
+        outline: none;
+    }
+
+    input:focus {
+        border-color: #aaa;
+    }
+
+    button {
+        margin-top: 15px;
+        background: #111;
+        color: #ddd;
+        border: 1px solid #666;
+        padding: 12px 20px;
+        font-family: "Courier New", monospace;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #222;
+    }
+
+    #message {
+        margin-top: 25px;
+        min-height: 25px;
+        color: #999;
+    }
+
+    #access {
+        display: none;
+        margin-top: 30px;
+        border-top: 1px solid #444;
+        padding-top: 25px;
+    }
+
+    .granted {
+        color: #ccc;
+        letter-spacing: 2px;
+    }
+
+    .file {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #444;
+        line-height: 1.6;
+    }
+
+    .file a {
+        color: #ddd;
+        text-decoration: none;
+    }
+
+    .file a:hover {
+        text-decoration: underline;
+    }
+
+    .footer {
+        margin-top: 35px;
+        color: #555;
+        font-size: 10px;
+        line-height: 1.6;
+    }
+
+    .error {
+        color: #888;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="terminal">
+
+    <div class="header">
+        HAPPY KIDS COMPANY
+        <br>
+        INTERNAL INFORMATION SYSTEM
+    </div>
+
+    <div class="title">
+        CONFIDENTIAL FILE ACCESS
+    </div>
+
+    <div class="subtitle">
+        SYSTEM ID: HKC-1998
+    </div>
+
+    <br>
+
+    <div class="warning">
+        WARNING: THIS DIRECTORY IS RESTRICTED.
+        <br>
+        UNAUTHORIZED ACCESS WILL BE RECORDED.
+    </div>
+
+    <label for="password">
+        ENTER PASSWORD:
+    </label>
+
+    <input
+        type="password"
+        id="password"
+        autocomplete="off"
+        onkeydown="if(event.key === 'Enter') checkPassword()"
+    >
+
+    <button onclick="checkPassword()">
+        ACCESS
+    </button>
+
+    <div id="message"></div>
+
+    <div id="access">
+
+        <div class="granted">
+            ACCESS GRANTED.
+        </div>
+
+        <br>
+
+        <div>
+            SECURE DIRECTORY FOUND:
+        </div>
+
+        <div class="file">
+            📁 C-0721 — CHRISTOFER
+            <br><br>
+
+            <a
+                href="https://drive.google.com/drive/u/0/mobile/folders/1Zjj5MBXIijHjx4BmMwUzAqRd0bX5HGJ5?tab=oo&sort=13&direction=a"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                [ OPEN DIRECTORY ]
+            </a>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        HAPPY KIDS COMPANY © 1998
+        <br>
+        ALL ACCESS ATTEMPTS ARE LOGGED.
+    </div>
+
+</div>
+
+<script>
+
+const correctPassword = "Happykidscompany.confidential";
+
+function checkPassword() {
+
+    const input = document.getElementById("password").value;
+    const message = document.getElementById("message");
+    const access = document.getElementById("access");
+
+    if (input === correctPassword) {
+
+        message.textContent = "";
+        access.style.display = "block";
+
+    } else {
+
+        access.style.display = "none";
+        message.textContent = "ACCESS DENIED.";
+        message.className = "error";
+
+    }
+}
+
+</script>
+
+</body>
+</html>
